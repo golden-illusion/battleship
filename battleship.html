@@ -3,22 +3,45 @@
 </head>
 
 <body>
-  {{> board}}
-</body>
-
-<template name="board">
   <h1>My Board!</h1>
-    <div class="row-fluid">
-      <div class="span6">
-        <div id="board">
-          {{#each points}}
-            {{> point}}
-          {{/each}}
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="row-fluid">
+        <div class="span4">
+          <div id="harbor">
+            {{> harbor}}
+          </div>
+        </div>
+        <div class="span8">
+          <div id="board">
+            {{> board}}
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</body>
+
+<template name="board">
+  {{#each points}}
+    {{> point}}
+  {{/each}}
 </template>
 
 <template name="point">
-  <div class="square {{ship_part}}"></div>
+  <div class="square {{covered}}"></div>
+</template>
+
+<template name="harbor">
+  {{#each frigates}}
+    {{> frigate}}
+  {{/each}}
+</template>
+
+<template name="frigate">
+  <div class="ship">
+    {{#each parts}}
+    <div class="square ship-part"></div>
+    {{/each}}
+  </div>
 </template>
